@@ -11,7 +11,7 @@ export default function ToolList() {
 
     return (
         <>
-            <h1 className="text-center">Your ToolShed</h1>
+            <h1 className="text-center">All Tools in ToolSheds</h1>
             <section>
                 {tools.map((t) => (
                     <Tool key={tools.id} tool={t} />

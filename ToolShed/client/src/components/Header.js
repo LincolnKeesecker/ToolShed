@@ -31,6 +31,9 @@ export default function Header({ isLoggedIn, user }) {
                                 <NavItem>
                                     <NavLink tag={RRNavLink} to="/MyToolShed">My ToolShed</NavLink>
                                 </NavItem>
+                                <NavItem>
+                                    <NavLink tag={RRNavLink} to="/addtool">Add A Tool</NavLink>
+                                </NavItem>
                             </>
                         }
                     </Nav>

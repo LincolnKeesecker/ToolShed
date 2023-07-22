@@ -20,7 +20,7 @@ namespace ToolShed.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                        SELECT t.Id, t.[Name], t.[Description], t.ConditionId
+                        SELECT t.Id, t.[Name], t.[Description], t.ConditionId, t.UserId
                           FROM Tool t
                       ORDER BY t.[Name]";
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -33,7 +33,8 @@ namespace ToolShed.Repositories
                                 Id = DbUtils.GetInt(reader, "Id"),
                                 Name = DbUtils.GetString(reader, "Name"),
                                 Description = DbUtils.GetString(reader, "Description"),
-                                ConditionId = DbUtils.GetInt(reader, "ConditionId")
+                                ConditionId = DbUtils.GetInt(reader, "ConditionId"),
+                                UserId = DbUtils.GetInt(reader, "UserId")
                             });
                         }
                         return tools;
@@ -51,12 +52,21 @@ namespace ToolShed.Repositories
         }
         public void Add(Tool tool)
         {
-            using (var cmd = Connection.CreateCommand())
+            using (SqlConnection conn = Connection)
             {
-                cmd.CommandText = @"INSERT INTO Tool ([Name], [Description], ConditionId)
-                                    OUTPUT INSERTED.ID
-                                    VALUES (@Name, @Description, @ConditionId)";
-                DbUtils.AddParameter(cmd, "@Name", tool.Name);
+                conn.Open();
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"INSERT INTO Tool ([Name], [Description], ConditionId, UserId)
+                                        OUTPUT INSERTED.ID
+                                        VALUES (@Name, @Description, @ConditionId, @UserId)";
+                    DbUtils.AddParameter(cmd, "@Name", tool.Name);
+                    DbUtils.AddParameter(cmd, "@Description", tool.Description);
+                    DbUtils.AddParameter(cmd, "@ConditionId", tool.ConditionId);
+                    DbUtils.AddParameter(cmd, "@UserId", tool.UserId);
+
+                    tool.Id = (int)cmd.ExecuteScalar();
+                }
             }
         }
         public void Update(Tool tool)

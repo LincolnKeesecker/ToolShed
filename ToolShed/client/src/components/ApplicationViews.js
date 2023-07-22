@@ -4,6 +4,7 @@ import Login from "./auth/Login";
 import Hello from "./Hello";
 import Register from "./auth/Register";
 import ToolList from "./tool/ToolList";
+import ToolForm from "./tool/ToolForm";
 
 
 export default function ApplicationViews({ isLoggedIn }) {
@@ -18,6 +19,8 @@ export default function ApplicationViews({ isLoggedIn }) {
                     <Route path="login" element={<Login />} />
                     <Route path="register" element={<Register />} />
                     <Route path="toolList" element={<ToolList />} />
+
+                    <Route path="addtool" element={isLoggedIn ? <ToolForm /> : <Navigate to="/login" />} />
 
                     <Route path="*" element={<p>Whoops, nothing here ...</p>} />
                 </Route>

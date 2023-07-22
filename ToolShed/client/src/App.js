@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { Spinner } from 'reactstrap';
 import Header from "./components/Header"
 import ApplicationViews from "./components/ApplicationViews"
@@ -28,10 +28,10 @@ function App() {
   }
 
   return (
-    <Router>
+    <BrowserRouter>
       <Header isLoggedIn={isLoggedIn} userProfile={userProfile} />
       <ApplicationViews isLoggedIn={isLoggedIn} userProfile={userProfile} />
-    </Router>
+    </BrowserRouter>
   );
 }
 

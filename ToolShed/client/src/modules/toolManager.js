@@ -76,7 +76,7 @@ export const addTool = (tool) => {
                 throw new Error("Unathorized");
             } else {
                 throw new Error(
-                    "Dagnabit! You can't add that!"
+                    "An error occured while trying to add a post.",
                 );
             }
         });
