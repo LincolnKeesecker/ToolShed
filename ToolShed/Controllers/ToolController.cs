@@ -35,7 +35,7 @@ namespace ToolShed.Controllers
         }
 
         [HttpGet("MyToolShed/{userId}")]
-        public IActionResult GetUserPosts(int userId)
+        public IActionResult GetUserTools(int userId)
         {
             return Ok(_toolRepository.GetByUserId(userId));
         }
@@ -46,6 +46,25 @@ namespace ToolShed.Controllers
             _toolRepository.Add(tool);
 
             return CreatedAtAction("Get", new { id = tool.Id }, tool);
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, Tool tool)
+        {
+            if (id != tool.Id)
+            {
+                return BadRequest();
+            }
+
+            _toolRepository.Update(tool);
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _toolRepository.Delete(id);
+            return NoContent();
         }
     }
 }

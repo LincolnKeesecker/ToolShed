@@ -7,7 +7,7 @@ using ToolShed.Utils;
 
 namespace ToolShed.Repositories
 {
-    public class ConditionRepository : BaseRepository, IConditionRepository, IConditionRepository
+    public class ConditionRepository : BaseRepository, IConditionRepository
     {
         public ConditionRepository(IConfiguration config) : base(config) { }
         public List<Condition> GetAllConditions()

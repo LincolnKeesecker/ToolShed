@@ -40,9 +40,9 @@ export const getToolDetails = (id) => {
     });
 };
 
-export const getUserTools = (userId) => {
+export const getUserTools = (id) => {
     return getToken().then((token) => {
-        return fetch(`${toolsURL}/MyToolShed/${userId}`, {
+        return fetch(`${toolsURL}/MyToolShed/${id}`, {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -82,3 +82,26 @@ export const addTool = (tool) => {
         });
     });
 };
+
+export const deleteTool = (toolId) => {
+    return getToken().then(token => {
+        return fetch(`${toolsURL}/${toolId}`, {
+            method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+    })
+}
+
+export const editCategory = (oldName, toolName) => {
+    return getToken().then(token => {
+        return fetch(`${toolsURL}?oldName=${oldName}&newName=${toolName}`, {
+            method: "PUT",
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json"
+            }
+        })
+    })
+}

@@ -14,7 +14,7 @@ export default function ToolList() {
             <h1 className="text-center">All Tools in ToolSheds</h1>
             <section>
                 {tools.map((t) => (
-                    <Tool key={tools.id} tool={t} />
+                    <Tool key={t.id} tool={t} />
                 ))}
             </section>
         </>

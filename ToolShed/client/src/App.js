@@ -29,8 +29,8 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Header isLoggedIn={isLoggedIn} userProfile={userProfile} />
-      <ApplicationViews isLoggedIn={isLoggedIn} userProfile={userProfile} />
+      <Header isLoggedIn={isLoggedIn} user={userProfile} />
+      <ApplicationViews isLoggedIn={isLoggedIn} user={userProfile} />
     </BrowserRouter>
   );
 }

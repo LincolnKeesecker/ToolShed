@@ -5,21 +5,21 @@ import { getToolDetails } from "../../modules/toolManager"
 
 export default function ToolDetails() {
     const { id } = useParams(),
-        [t, setT] = useState({})
+        [tool, setTool] = useState({})
 
     useEffect(() => {
-        getToolDetails(id).then(setT)
+        getToolDetails(id).then(setTool)
     }, [])
 
-    if (t === null) {
+    if (tool === null) {
         return <p>404 not found</p>
     }
     else {
         return (
             <div className="m-4 text-center">
-                <h1 className="bold">{t.name}</h1>
-                <p>{t.description}</p>
-                <p>{t.conditionId.name}</p>
+                <h1 className="bold">{tool.name}</h1>
+                <p>{tool.description}</p>
+                <p>{tool.condition.name}</p>
             </div>
         );
     }

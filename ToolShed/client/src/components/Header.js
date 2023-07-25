@@ -26,10 +26,7 @@ export default function Header({ isLoggedIn, user }) {
                         {isLoggedIn &&
                             <>
                                 <NavItem>
-                                    <NavLink tag={RRNavLink} to="/">Home</NavLink>
-                                </NavItem>
-                                <NavItem>
-                                    <NavLink tag={RRNavLink} to="/MyToolShed">My ToolShed</NavLink>
+                                    <NavLink tag={RRNavLink} to="/usertools">My ToolShed</NavLink>
                                 </NavItem>
                                 <NavItem>
                                     <NavLink tag={RRNavLink} to="/addtool">Add A Tool</NavLink>

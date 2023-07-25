@@ -25,28 +25,11 @@ namespace ToolShed.Controllers
             return Ok(_conditionRepository.GetAllConditions());
         }
 
-        [HttpDelete("{tagId}")]
-        public IActionResult Delete([FromRoute] int conditionId)
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
         {
-            string UUID = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
-            User user = _userRepository.GetByFirebaseUserId(UUID);
-
-            if (user.UserTypeId != UserType.ADMIN_ID)
-            {
-                return Unauthorized();
-            }
-
-            try
-            {
-                _conditionRepository.Delete(conditionId);
-
-                return NoContent();
-            }
-            catch
-            {
-                return BadRequest();
-            }
+            _conditionRepository.Delete(id);
+            return NoContent();   
         }
 
         [HttpPut]
