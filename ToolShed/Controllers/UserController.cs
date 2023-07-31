@@ -56,6 +56,17 @@ namespace ToolShed.Controllers
             return Ok(user);
         }
 
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, User user)
+        {
+            if (id != user.Id)
+            {
+                return BadRequest();
+            }
+            _userRepository.Update(user);
+            return NoContent();
+        }
+
         private User GetCurrentUserProfile()
         {
             var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;

@@ -13,6 +13,7 @@ import { logout } from "../modules/authManager";
 
 export default function Header({ isLoggedIn, user }) {
     const [isOpen, setIsOpen] = useState(false);
+
     const toggle = () => setIsOpen(!isOpen);
 
     return (
@@ -39,6 +40,9 @@ export default function Header({ isLoggedIn, user }) {
                             <>
                                 <NavItem>
                                     <NavLink tag={RRNavLink} to="/toolList">ToolSheds</NavLink>
+                                </NavItem>
+                                <NavItem>
+                                    <NavLink tag={RRNavLink} to="/myaccount">Account</NavLink>
                                 </NavItem>
                                 <NavItem>
                                     <a aria-current="page" className="nav-link"

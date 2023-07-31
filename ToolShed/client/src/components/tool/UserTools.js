@@ -5,6 +5,7 @@ import Tool from "./Tool";
 
 export default function UserTools({ user }) {
     const [tools, setTools] = useState([]);
+    const userCheck = user
 
     useEffect(() => {
         getUserTools(user.id).then(setTools);
@@ -14,7 +15,7 @@ export default function UserTools({ user }) {
         return (
             <section>
                 {tools.map((t) => (
-                    <Tool key={t.id} tool={t} />
+                    <Tool key={t.id} tool={t} userCheck={userCheck} />
                 ))}
             </section>
         )

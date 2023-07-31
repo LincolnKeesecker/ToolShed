@@ -80,6 +80,8 @@ namespace ToolShed.Repositories
                                     Id = id,
                                     Name = DbUtils.GetString(reader, "ToolName"),
                                     Description = DbUtils.GetString(reader, "Description"),
+                                    ConditionId = DbUtils.GetInt(reader, "ConditionId"),
+                                    UserId = DbUtils.GetInt(reader, "UserId"),
                                     Condition = new Condition()
                                     {
                                         Id = DbUtils.GetInt(reader, "ConditionId"),
@@ -113,7 +115,8 @@ namespace ToolShed.Repositories
                           FROM Tool t
                      LEFT JOIN Users u ON t.UserId = u.id
                      LEFT JOIN Condition c ON t.ConditionId = c.Id
-                         WHERE t.UserId = @UserId";
+                         WHERE t.UserId = @UserId
+                      ORDER BY t.Name";
                     DbUtils.AddParameter(cmd, "@UserId", userId);
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -183,6 +186,7 @@ namespace ToolShed.Repositories
                     DbUtils.AddParameter(cmd, "@Description", tool.Description);
                     DbUtils.AddParameter(cmd, "@ConditionId", tool.ConditionId);
                     DbUtils.AddParameter(cmd, "@UserId", tool.UserId);
+                    DbUtils.AddParameter(cmd, "@Id", tool.Id);
 
                     cmd.ExecuteNonQuery();
                 }

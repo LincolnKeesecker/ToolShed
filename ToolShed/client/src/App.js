@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter } from "react-router-dom";
 import { Spinner } from 'reactstrap';
 import Header from "./components/Header"
-import ApplicationViews from "./components/ApplicationViews"
+import ApplicationViews from "./components/views/ApplicationViews"
 import { onLoginStatusChange } from "./modules/authManager";
 import { me } from './modules/authManager';
 import './App.css';

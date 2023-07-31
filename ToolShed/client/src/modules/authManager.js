@@ -1,5 +1,6 @@
 import firebase from "firebase/app";
 import "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 const _apiUrl = "/api/user";
 
@@ -62,6 +63,19 @@ export const me = () => {
         }).then((resp) => resp.json()),
     );
 };
+
+export const editUser = (user) => {
+    return getToken().then(token => {
+        return fetch(`${_apiUrl}/${user.id}`, {
+            method: "PUT",
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(user)
+        })
+    })
+}
 
 export const register = (userProfile, password) => {
     return firebase.auth().createUserWithEmailAndPassword(userProfile.email, password)

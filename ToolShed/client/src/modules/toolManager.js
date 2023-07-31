@@ -94,14 +94,15 @@ export const deleteTool = (toolId) => {
     })
 }
 
-export const editCategory = (oldName, toolName) => {
+export const editTool = (tool) => {
     return getToken().then(token => {
-        return fetch(`${toolsURL}?oldName=${oldName}&newName=${toolName}`, {
+        return fetch(`${toolsURL}/${tool.id}`, {
             method: "PUT",
             headers: {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json"
-            }
+            },
+            body: JSON.stringify(tool)
         })
     })
 }

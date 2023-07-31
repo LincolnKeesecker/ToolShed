@@ -18,7 +18,7 @@ namespace ToolShed.Repositories
                     cmd.CommandText = @"
                         SELECT u.Id, u.FirebaseUserId, u.[Name], u.Email
                           FROM Users u
-                         WHERE FirebaseUserId = @FirebaseuserId";
+                         WHERE FirebaseUserId = @FirebaseUserId";
 
                     DbUtils.AddParameter(cmd, "@FirebaseUserId", firebaseUserId);
 
@@ -59,6 +59,28 @@ namespace ToolShed.Repositories
                     DbUtils.AddParameter(cmd, "@Activated", user.Activated);
 
                     user.Id = (int)cmd.ExecuteScalar();
+                }
+            }
+        }
+
+        public void Update(User user)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        UPDATE Users
+                           SET Name = @Name,
+                               Email = @Email
+                         WHERE Id = @Id";
+
+                    DbUtils.AddParameter(cmd, "@Id", user.Id);
+                    DbUtils.AddParameter(cmd, "@Name", user.Name);
+                    DbUtils.AddParameter(cmd, "@Email", user.Email);
+
+                    cmd.ExecuteNonQuery();
                 }
             }
         }

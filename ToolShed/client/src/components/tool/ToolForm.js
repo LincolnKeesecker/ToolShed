@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"
 import { addTool } from "../../modules/toolManager";
-import { Form, Button, FormGroup, Input, Label, Col } from "reactstrap";
+import { Form, Button, FormGroup, Input, Label, Col, Card } from "reactstrap";
 import { getAllConditions } from "../../modules/conditionManager";
 
 const ToolForm = ({ user }) => {
@@ -29,43 +29,48 @@ const ToolForm = ({ user }) => {
 
     return (
         <>
-            <h2>New Tool</h2>
-            <Form onSubmit={submitTool}>
-                <FormGroup row>
-                    <Label sm={2} htmlFor="name">Tool Name</Label>
-                    <Col sm={10}>
-                        <Input
-                            type="text"
-                            name="name"
-                            onChange={(e) => setName(e.target.value)}
-                        />
-                    </Col>
-                </FormGroup>
-                <FormGroup row>
-                    <Label sm={2} htmlFor="description">Tool Description</Label>
-                    <Col sm={10}>
-                        <Input
-                            type="text"
-                            description="description"
-                            onChange={(e) => setDescription(e.target.value)}
-                        />
-                    </Col>
-                </FormGroup>
+            <Card className="m-5 text-center" style={{
+                'borderRadius': '20px',
+            }}>
+                <h2>New Tool</h2>
+                <Form onSubmit={submitTool}>
+                    <FormGroup row>
+                        <Label htmlFor="name" className="m-3">Tool Name</Label>
+                        <Col>
+                            <Input
+                                type="text"
+                                placeholder="Enter tool name here"
+                                name="name"
+                                onChange={(e) => setName(e.target.value)}
+                            />
+                        </Col>
+                    </FormGroup>
+                    <FormGroup row>
+                        <Label htmlFor="description" className="m-3">Tool Description</Label>
+                        <Col>
+                            <Input
+                                type="text"
+                                placeholder="Eneter Tool Description here"
+                                description="description"
+                                onChange={(e) => setDescription(e.target.value)}
+                            />
+                        </Col>
+                    </FormGroup>
 
-                <FormGroup>
-                    <Label sm={2} htmlFor="condition" className="m-3">Select A Condition</Label>
-                    <Input sm={10} type="select" onChange={(e) => setConditionId(e.target.value)}>
-                        {condition ? condition.map((condition) => <option value={condition.id} key={`addtoolcondition--${condition.id}`}>{condition.name}</option>) : ""}
-                    </Input>
-                </FormGroup>
-                <Button
-                    id="tool-save-button"
-                    color="success"
-                    type="submit"
-                >
-                    Save
-                </Button>
-            </Form>
+                    <FormGroup>
+                        <Label htmlFor="condition" className="m-3">Select A Condition</Label>
+                        <Input type="select" onChange={(e) => setConditionId(e.target.value)}>
+                            {condition ? condition.map((condition) => <option value={condition.id} key={`addtoolcondition--${condition.id}`}>{condition.name}</option>) : ""}
+                        </Input>
+                    </FormGroup>
+                    <Button
+                        id="tool-save-button"
+                        color="success"
+                        type="submit">
+                        Save
+                    </Button>
+                </Form>
+            </Card>
         </>
     )
 }
