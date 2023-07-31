@@ -47,14 +47,12 @@ export const ToolEdit = ({ user }) => {
     if (currentTool) {
         return (
             <>
-                <Card className="m-5 text-center" style={{
-                    'borderRadius': '20px',
-                }}>
+                <Card className="m-5 text-center">
 
                     <h2>Update Tool Info</h2>
-                    <Form onSubmit={saveTool}>
+                    <Form className="p-5" onSubmit={saveTool}>
                         <FormGroup row>
-                            <Label htmlFor="name" className="m-3">Tool Name</Label>
+                            <Label htmlFor="name" >Tool Name</Label>
                             <Col>
                                 <Input
                                     value={currentTool.name}
@@ -69,7 +67,7 @@ export const ToolEdit = ({ user }) => {
                             </Col>
                         </FormGroup>
                         <FormGroup row>
-                            <Label htmlFor="description" className="m-3">Tool Description</Label>
+                            <Label htmlFor="description">Tool Description</Label>
                             <Col>
                                 <Input
                                     value={currentTool.description}
@@ -85,7 +83,7 @@ export const ToolEdit = ({ user }) => {
                         </FormGroup>
 
                         <FormGroup>
-                            <Label htmlFor="condition" className="m-3">Select A Condition</Label>
+                            <Label htmlFor="condition">Select A Condition</Label>
                             <Input value={currentTool.conditionId} type="select"
                                 onChange={(event) => {
                                     const copy = { ...currentTool };
@@ -96,7 +94,6 @@ export const ToolEdit = ({ user }) => {
                             </Input>
                         </FormGroup>
                         <Button
-                            className="m-3"
                             id="tool-save-button"
                             color="success"
                             type="submit"

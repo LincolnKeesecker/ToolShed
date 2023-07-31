@@ -22,7 +22,7 @@ export default function Header({ isLoggedIn, user }) {
                 <NavbarBrand tag={RRNavLink} to="/">ToolShed</NavbarBrand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
-                    <Nav className="mr-auto" navbar>
+                    <Nav className="m1-auto" navbar>
                         { /* When isLoggedIn === true, we will render the Home link */}
                         {isLoggedIn &&
                             <>

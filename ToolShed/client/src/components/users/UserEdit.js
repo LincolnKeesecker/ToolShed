@@ -25,9 +25,8 @@ export const UserEdit = ({ user }) => {
     if (currentUser) {
         return <>
             <Card className="m-5 text-center" style={{
-                'borderRadius': '20px',
             }}>
-                <Form className="p-5" onSubmit={saveUser}>
+                <Form className="p-3" onSubmit={saveUser}>
                     <h3>Update Current Account Info</h3>
                     <FormGroup>
                         <Label htmlFor="fullName">Name: </Label>
@@ -61,9 +60,8 @@ export const UserEdit = ({ user }) => {
                     </FormGroup>
                     <Button
                         id="user-save-button"
-                        color="primary"
-                        type="submit"
-                    >
+                        color="success"
+                        type="submit">
                         Save Updated Info
                     </Button>
                 </ Form>

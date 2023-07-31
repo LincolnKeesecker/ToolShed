@@ -29,13 +29,11 @@ const ToolForm = ({ user }) => {
 
     return (
         <>
-            <Card className="m-5 text-center" style={{
-                'borderRadius': '20px',
-            }}>
-                <h2>New Tool</h2>
-                <Form onSubmit={submitTool}>
+            <Card className="m-5 text-center">
+                <h2 className="m-2">New Tool</h2>
+                <Form className="p-3" onSubmit={submitTool}>
                     <FormGroup row>
-                        <Label htmlFor="name" className="m-3">Tool Name</Label>
+                        <Label htmlFor="name">Tool Name</Label>
                         <Col>
                             <Input
                                 type="text"
@@ -46,7 +44,7 @@ const ToolForm = ({ user }) => {
                         </Col>
                     </FormGroup>
                     <FormGroup row>
-                        <Label htmlFor="description" className="m-3">Tool Description</Label>
+                        <Label htmlFor="description">Tool Description</Label>
                         <Col>
                             <Input
                                 type="text"
@@ -58,7 +56,7 @@ const ToolForm = ({ user }) => {
                     </FormGroup>
 
                     <FormGroup>
-                        <Label htmlFor="condition" className="m-3">Select A Condition</Label>
+                        <Label htmlFor="condition">Select A Condition</Label>
                         <Input type="select" onChange={(e) => setConditionId(e.target.value)}>
                             {condition ? condition.map((condition) => <option value={condition.id} key={`addtoolcondition--${condition.id}`}>{condition.name}</option>) : ""}
                         </Input>

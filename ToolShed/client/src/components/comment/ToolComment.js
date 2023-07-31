@@ -29,7 +29,6 @@ const ToolComment = ({ toolComment }) => {
                         color="danger"
                         onClick={() => setModal(!modal)}
                         style={{
-                            'borderRadius': '20px',
                             'margin': '10px'
                         }}>
                         Delete
@@ -37,7 +36,7 @@ const ToolComment = ({ toolComment }) => {
                 </ButtonGroup>
 
                 <Modal isOpen={modal} toggle={() => setModal(!modal)}>
-                    <ModalHeader toggle={() => setModal(!modal)}>Modal Title</ModalHeader>
+                    <ModalHeader toggle={() => setModal(!modal)}>Delete?</ModalHeader>
                     <ModalBody>
                         Are you sure you want to delete this comment?
                     </ModalBody>

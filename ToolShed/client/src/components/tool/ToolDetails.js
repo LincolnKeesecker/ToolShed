@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getToolDetails } from "../../modules/toolManager"
-import { Button, Card } from "reactstrap";
+import { Button, ButtonGroup, Card, CardBody } from "reactstrap";
 import ToolComment from "../comment/ToolComment";
 import { getToolComments } from "../../modules/toolCommentManager";
 
@@ -25,20 +25,22 @@ export default function ToolDetails() {
     else {
         return (
             <>
-                <Card className="m-4 text-center">
+                <Card className="m-5 p-5 text-center">
                     <h1 className="bold">{tool.name}</h1>
                     <h2>{tool.description}</h2>
                     <h3>{tool.condition.name}</h3>
 
                 </Card>
-                <Card className="m-4 text-center">
+                <Card className="m-5 p-5 text-center">
                     <Button
+                        style={{
+                            'padding-top': '3px',
+                            'margin': 'auto',
+                            'maxWidth': '14vw'
+                        }}
                         color="secondary"
                         onClick={() => navigate(`/ToolComment/add/${tool.id}`)}
-                        style={{
-                            'borderRadius': '20px',
-                            'margin': '10px'
-                        }}>
+                    >
                         Add a Comment
                     </Button>
 
@@ -48,6 +50,7 @@ export default function ToolDetails() {
                         toolComments.map((tool) => {
                             return <ToolComment toolComment={tool} />
                         }) : ""}
+                    <CardBody />
                 </Card>
             </>
 

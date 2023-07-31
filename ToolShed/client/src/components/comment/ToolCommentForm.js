@@ -24,12 +24,10 @@ const ToolCommentForm = ({ user }) => {
 
     return (
         <>
-            <Card className="m-5 text-center" style={{
-                'borderRadius': '20px',
-            }}>
-                < Form onSubmit={submitToolComment}>
+            <Card className="m-5 text-center">
+                < Form className="p-5" onSubmit={submitToolComment}>
                     <FormGroup row>
-                        <Label htmlFor="body" className="m-4 text-center">New Comment:</Label>
+                        <h1 className="text-center">New Comment:</h1>
                         <Col>
                             <Input
                                 type="text"
@@ -41,7 +39,6 @@ const ToolCommentForm = ({ user }) => {
                     <Button
                         id="toolComment-save-button"
                         style={{
-                            'borderRadius': '20px',
                             'margin': '10px'
                         }}
                         color="success"

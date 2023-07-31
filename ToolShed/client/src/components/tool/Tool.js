@@ -20,10 +20,9 @@ export default function Tool({ tool, userCheck }) {
 
     return (
         <Card className="m-5 text-center" style={{
-            'borderRadius': '20px',
         }}>
             <CardBody style={{
-                'borderRadius': '20px',
+                'borderRadius': '5px',
             }}
             >
                 <h3>{tool.name}</h3>
@@ -35,7 +34,7 @@ export default function Tool({ tool, userCheck }) {
                         <Button
                             color="secondary"
                             style={{
-                                'borderRadius': '20px',
+                                'borderRadius': '5px',
                                 'margin': '10px'
                             }}>
                             Details</Button>
@@ -46,7 +45,7 @@ export default function Tool({ tool, userCheck }) {
                                 color="secondary"
                                 onClick={() => navigate(`/edittool/${tool.id}`)}
                                 style={{
-                                    'borderRadius': '20px',
+                                    'borderRadius': '5px',
                                     'margin': '10px'
                                 }}>
                                 Edit</Button>
@@ -54,7 +53,7 @@ export default function Tool({ tool, userCheck }) {
                                 color="danger"
                                 onClick={() => setModal(!modal)}
                                 style={{
-                                    'borderRadius': '20px',
+                                    'borderRadius': '5px',
                                     'margin': '10px'
                                 }}>
                                 Delete
@@ -64,7 +63,7 @@ export default function Tool({ tool, userCheck }) {
                 </ButtonGroup>
 
                 <Modal isOpen={modal} toggle={() => setModal(!modal)}>
-                    <ModalHeader toggle={() => setModal(!modal)}>Modal Title</ModalHeader>
+                    <ModalHeader toggle={() => setModal(!modal)}>Delete?</ModalHeader>
                     <ModalBody>
                         Are you sure you want to delete your {tool.name}?
                     </ModalBody>
