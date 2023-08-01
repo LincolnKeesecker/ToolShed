@@ -19,15 +19,15 @@ export default function Tool({ tool, userCheck }) {
     }
 
     return (
-        <Card className="m-5 text-center" style={{
+        <Card className="m-5 bg-secondary bg-opacity-50 text-center" style={{
         }}>
             <CardBody style={{
                 'borderRadius': '5px',
             }}
             >
                 <h3>{tool.name}</h3>
-                <h3>{tool.description}</h3>
-                <h3>{tool?.condition?.name}</h3>
+                <p>{tool.description}</p>
+                <p>{tool?.condition?.name}</p>
 
                 <ButtonGroup>
                     <Link to={`/toolDetails/${tool.id}`} >

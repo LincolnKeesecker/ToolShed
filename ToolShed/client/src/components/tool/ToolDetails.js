@@ -25,13 +25,13 @@ export default function ToolDetails() {
     else {
         return (
             <>
-                <Card className="m-5 p-5 text-center">
+                <Card className="m-5 p-5 bg-secondary bg-opacity-50 text-center">
                     <h1 className="bold">{tool.name}</h1>
-                    <h2>{tool.description}</h2>
-                    <h3>{tool.condition.name}</h3>
+                    <p>{tool.description}</p>
+                    <p>{tool.condition.name}</p>
 
                 </Card>
-                <Card className="m-5 p-5 text-center">
+                <Card className="m-5 bg-secondary bg-opacity-50 p-5 text-center">
                     <Button
                         style={{
                             'padding-top': '3px',

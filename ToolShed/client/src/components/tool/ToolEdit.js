@@ -47,7 +47,7 @@ export const ToolEdit = ({ user }) => {
     if (currentTool) {
         return (
             <>
-                <Card className="m-5 text-center">
+                <Card className="m-5 bg-secondary bg-opacity-50 text-center">
 
                     <h2>Update Tool Info</h2>
                     <Form className="p-5" onSubmit={saveTool}>

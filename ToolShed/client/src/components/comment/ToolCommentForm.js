@@ -24,13 +24,13 @@ const ToolCommentForm = ({ user }) => {
 
     return (
         <>
-            <Card className="m-5 text-center">
-                < Form className="p-5" onSubmit={submitToolComment}>
+            <Card className="m-5 p-5 bg-secondary text-white bg-opacity-50 text-center">
+                < Form className="m-5 p-5" onSubmit={submitToolComment}>
                     <FormGroup row>
                         <h1 className="text-center">New Comment:</h1>
                         <Col>
                             <Input
-                                type="text"
+                                type="textarea"
                                 description="body"
                                 onChange={(e) => setbody(e.target.value)}
                             />

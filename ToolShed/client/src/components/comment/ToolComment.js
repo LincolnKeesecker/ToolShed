@@ -20,7 +20,7 @@ const ToolComment = ({ toolComment }) => {
 
     return (
 
-        <Card>
+        <Card className="m-5 bg-secondary text-white text-center">
             <CardBody>
                 <CardTitle>{toolComment?.user.name} said: </CardTitle>
                 <CardText>{toolComment?.body}</CardText>

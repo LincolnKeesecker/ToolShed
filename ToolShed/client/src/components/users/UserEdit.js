@@ -24,7 +24,7 @@ export const UserEdit = ({ user }) => {
 
     if (currentUser) {
         return <>
-            <Card className="m-5 text-center" style={{
+            <Card className="m-5 bg-secondary bg-opacity-50 text-center" style={{
             }}>
                 <Form className="p-3" onSubmit={saveUser}>
                     <h3>Update Current Account Info</h3>

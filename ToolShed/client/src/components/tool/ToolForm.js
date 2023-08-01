@@ -29,7 +29,7 @@ const ToolForm = ({ user }) => {
 
     return (
         <>
-            <Card className="m-5 text-center">
+            <Card className="m-5 bg-secondary bg-opacity-50 text-center">
                 <h2 className="m-2">New Tool</h2>
                 <Form className="p-3" onSubmit={submitTool}>
                     <FormGroup row>
@@ -48,7 +48,7 @@ const ToolForm = ({ user }) => {
                         <Col>
                             <Input
                                 type="text"
-                                placeholder="Eneter Tool Description here"
+                                placeholder="Enter Tool Description here"
                                 description="description"
                                 onChange={(e) => setDescription(e.target.value)}
                             />
