@@ -27,7 +27,7 @@ const ToolCommentForm = ({ user }) => {
             <Card className="m-5 p-5 bg-secondary text-white bg-opacity-50 text-center">
                 < Form className="m-5 p-5" onSubmit={submitToolComment}>
                     <FormGroup row>
-                        <h1 className="text-center">New Comment:</h1>
+                        <h1 className="p-5 text-center">New Comment:</h1>
                         <Col>
                             <Input
                                 type="textarea"

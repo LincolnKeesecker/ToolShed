@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { ButtonGroup, Button, Modal, ModalHeader, ModalBody, ModalFooter, Card, CardBody } from "reactstrap";
 import { deleteTool } from "../../modules/toolManager";
 
-export default function Tool({ tool, userCheck }) {
+export default function Tool({ tool, userCheck, user }) {
     const [modal, setModal] = useState(false)
     const navigate = useNavigate();
 

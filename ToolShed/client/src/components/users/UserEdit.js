@@ -19,7 +19,7 @@ export const UserEdit = ({ user }) => {
     const saveUser = (e) => {
         e.preventDefault();
 
-        editUser(currentUser).then(navigate(`/myaccount`));
+        editUser(currentUser).then(navigate(`/usertools`));
     };
 
     if (currentUser) {
@@ -61,7 +61,8 @@ export const UserEdit = ({ user }) => {
                     <Button
                         id="user-save-button"
                         color="success"
-                        type="submit">
+                        type="submit"
+                    >
                         Save Updated Info
                     </Button>
                 </ Form>
