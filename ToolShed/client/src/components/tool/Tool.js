@@ -13,7 +13,7 @@ export default function Tool({ tool, userCheck, user }) {
                 if (res.ok) {
 
                     setModal(false)
-                    window.location.reload()
+                    navigate('/toolList')
                 }
             })
     }
@@ -26,8 +26,8 @@ export default function Tool({ tool, userCheck, user }) {
             }}
             >
                 <h3>{tool.name}</h3>
-                <p>{tool.description}</p>
-                <p>{tool?.condition?.name}</p>
+                <p>Description:   {tool.description}</p>
+                <p>Condition:   {tool?.condition?.name}</p>
 
                 <ButtonGroup>
                     <Link to={`/toolDetails/${tool.id}`} >

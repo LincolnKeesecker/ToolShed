@@ -66,5 +66,11 @@ namespace ToolShed.Controllers
             _toolRepository.Delete(id);
             return NoContent();
         }
+
+        [HttpGet("search")]
+        public IActionResult Search(string q, bool sortDesc)
+        {
+            return Ok(_toolRepository.Search(q, sortDesc));
+        }
     }
 }

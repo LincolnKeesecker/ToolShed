@@ -10,6 +10,7 @@ namespace ToolShed.Repositories
         List<Tool> GetAll();
         Tool GetById(int id);
         List<Tool> GetByUserId(int userId);
+        List<Tool> Search(string q, bool sortDesc);
         void Update(Tool tool);
     }
 }

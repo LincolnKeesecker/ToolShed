@@ -8,7 +8,7 @@ const ToolForm = ({ user }) => {
     const navigate = useNavigate();
     const [name, setName] = useState();
     const [description, setDescription] = useState();
-    const [conditionId, setConditionId] = useState();
+    const [conditionId, setConditionId] = useState(1);
     const [condition, setCondition] = useState();
 
     useEffect(() => {
@@ -57,7 +57,7 @@ const ToolForm = ({ user }) => {
 
                     <FormGroup>
                         <Label htmlFor="condition">Select A Condition</Label>
-                        <Input type="select" onChange={(e) => setConditionId(e.target.value)}>
+                        <Input type="select" onChange={(e) => setConditionId(parseInt(e.target.value))}>
                             {condition ? condition.map((condition) => <option value={condition.id} key={`addtoolcondition--${condition.id}`}>{condition.name}</option>) : ""}
                         </Input>
                     </FormGroup>

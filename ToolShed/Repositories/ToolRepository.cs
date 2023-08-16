@@ -167,6 +167,63 @@ namespace ToolShed.Repositories
                 }
             }
         }
+
+        public List<Tool> Search(string criterion, bool sortDescending)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    var sql = @"
+                        SELECT t.Id AS ToolId, t.Name AS ToolName, t.Description, t.ConditionId, t.UserId AS ToolUserId,
+                               u.Id AS UserId, u.Name AS UserName,
+                               c.Id AS ConditionId, c.Name AS ConditionName
+                          FROM Tool t
+                     LEFT JOIN Users u ON t.UserId = u.id
+                     LEFT JOIN Condition c ON t.ConditionId = c.Id
+                         WHERE ToolName LIKE s@Criterion OR t.Description LIKE @Criterion";
+
+                    if (sortDescending)
+                    {
+                        sql += " ORDER BY v.DateCreated DESC";
+                    }
+                    else
+                    {
+                        sql += " ORDER BY v.DateCreated";
+                    }
+
+                    cmd.CommandText = sql;
+                    DbUtils.AddParameter(cmd, "@Criterion", $"%{criterion}%");
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+
+                        var tools = new List<Tool>();
+                        while (reader.Read())
+                        {
+                            tools.Add(new Tool()
+                            {
+                                Id = DbUtils.GetInt(reader, "ToolId"),
+                                Name = DbUtils.GetString(reader, "ToolName"),
+                                Description = DbUtils.GetString(reader, "Description"),
+                                User = new User()
+                                {
+                                    Id = DbUtils.GetInt(reader, "UserId"),
+                                    Name = DbUtils.GetString(reader, "UserName"),
+                                },
+                                Condition = new Condition()
+                                {
+                                    Id = DbUtils.GetInt(reader, "ConditionId"),
+                                    Name = DbUtils.GetString(reader, "ConditionName"),
+                                }
+                            });
+                        }
+                        return tools;
+                    }
+                }
+            }
+        }
+
         public void Update(Tool tool)
         {
             using (var conn = Connection)

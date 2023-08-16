@@ -9,7 +9,7 @@ export default function UserTools({ user }) {
 
     useEffect(() => {
         getUserTools(user.id).then(setTools);
-    }, []);
+    }, [user]);
 
     if (tools.length > 0) {
         return (

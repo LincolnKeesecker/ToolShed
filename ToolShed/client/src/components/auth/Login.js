@@ -3,6 +3,7 @@ import { Button, Form, FormGroup, Label, Input, Card } from 'reactstrap';
 import { useNavigate, Link } from "react-router-dom";
 import { login } from "../../modules/authManager";
 
+
 export default function Login() {
     const navigate = useNavigate();
 
@@ -42,7 +43,7 @@ export default function Login() {
                         <Button>Login</Button>
                     </FormGroup>
                     <em>
-                        Not registered? <Link to="register">Register</Link>
+                        Not registered? <Link to="/register">Register</Link>
                     </em>
                 </fieldset>
             </Form>
